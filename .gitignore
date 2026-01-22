@@ -15,6 +15,7 @@ dist/
 
 # Generated protobuf files
 src/otaclient_pb2/_version.py
-src/otaclient_pb2/v2/*.py
+src/otaclient_pb2/v2/*_pb2.py
+src/otaclient_pb2/v2/*_pb2_grpc.py
 src/otaclient_pb2/v2/*.pyi
 src/otaclient_pb2/v2/*.proto
