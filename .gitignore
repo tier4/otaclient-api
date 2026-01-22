@@ -1,6 +1,20 @@
-.venv/
-dist/
-build/
+# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
+
+# Build
+build/
+dist/
+
+# Virtual environment
+.venv/
+
+# Linter
+.ruff_cache/
+
+# Generated protobuf files
+src/otaclient_pb2/_version.py
+src/otaclient_pb2/v2/*.py
+src/otaclient_pb2/v2/*.pyi
+src/otaclient_pb2/v2/*.proto
