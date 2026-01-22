@@ -32,6 +32,20 @@ hatch build -t wheel
 
 3. The built package will be placed in the `./dist` directory.
 
+## Generating Documentation
+
+Generate API documentation from proto files using Docker:
+
+```shell
+docker run --rm \
+  -v $(pwd)/docs:/out \
+  -v $(pwd)/proto:/protos \
+  pseudomuto/protoc-gen-doc \
+  --doc_opt=markdown,SERVICES.md
+```
+
+The generated documentation will be placed in `./docs/SERVICES.md`.
+
 ## Usage
 
 ```python
