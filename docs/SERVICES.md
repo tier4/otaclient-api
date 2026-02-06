@@ -1,75 +1,162 @@
 # Protocol Documentation
-
 <a name="top"></a>
 
 ## Table of Contents
 
 - [otaclient_v2.proto](#otaclient_v2-proto)
-  - [RollbackRequest](#OtaClientV2-RollbackRequest)
-  - [RollbackRequestEcu](#OtaClientV2-RollbackRequestEcu)
-  - [RollbackResponse](#OtaClientV2-RollbackResponse)
-  - [RollbackResponseEcu](#OtaClientV2-RollbackResponseEcu)
-  - [Status](#OtaClientV2-Status)
-  - [StatusProgress](#OtaClientV2-StatusProgress)
-  - [StatusRequest](#OtaClientV2-StatusRequest)
-  - [StatusResponse](#OtaClientV2-StatusResponse)
-  - [StatusResponseEcu](#OtaClientV2-StatusResponseEcu)
-  - [StatusResponseEcuV2](#OtaClientV2-StatusResponseEcuV2)
-  - [StopRequest](#OtaClientV2-StopRequest)
-  - [StopResponse](#OtaClientV2-StopResponse)
-  - [StopResponseEcu](#OtaClientV2-StopResponseEcu)
-  - [UpdateRequest](#OtaClientV2-UpdateRequest)
-  - [UpdateRequestEcu](#OtaClientV2-UpdateRequestEcu)
-  - [UpdateResponse](#OtaClientV2-UpdateResponse)
-  - [UpdateResponseEcu](#OtaClientV2-UpdateResponseEcu)
-  - [UpdateStatus](#OtaClientV2-UpdateStatus)
-
-  - [FailureType](#OtaClientV2-FailureType)
-  - [StatusOta](#OtaClientV2-StatusOta)
-  - [StatusProgressPhase](#OtaClientV2-StatusProgressPhase)
-  - [UpdatePhase](#OtaClientV2-UpdatePhase)
-
-  - [OtaClientService](#OtaClientV2-OtaClientService)
-
+    - [AbortRequest](#OtaClientV2-AbortRequest)
+    - [AbortRequestEcu](#OtaClientV2-AbortRequestEcu)
+    - [AbortResponse](#OtaClientV2-AbortResponse)
+    - [AbortResponseEcu](#OtaClientV2-AbortResponseEcu)
+    - [RollbackRequest](#OtaClientV2-RollbackRequest)
+    - [RollbackRequestEcu](#OtaClientV2-RollbackRequestEcu)
+    - [RollbackResponse](#OtaClientV2-RollbackResponse)
+    - [RollbackResponseEcu](#OtaClientV2-RollbackResponseEcu)
+    - [Status](#OtaClientV2-Status)
+    - [StatusProgress](#OtaClientV2-StatusProgress)
+    - [StatusRequest](#OtaClientV2-StatusRequest)
+    - [StatusResponse](#OtaClientV2-StatusResponse)
+    - [StatusResponseEcu](#OtaClientV2-StatusResponseEcu)
+    - [StatusResponseEcuV2](#OtaClientV2-StatusResponseEcuV2)
+    - [UpdateRequest](#OtaClientV2-UpdateRequest)
+    - [UpdateRequestEcu](#OtaClientV2-UpdateRequestEcu)
+    - [UpdateResponse](#OtaClientV2-UpdateResponse)
+    - [UpdateResponseEcu](#OtaClientV2-UpdateResponseEcu)
+    - [UpdateStatus](#OtaClientV2-UpdateStatus)
+  
+    - [AbortFailureType](#OtaClientV2-AbortFailureType)
+    - [FailureType](#OtaClientV2-FailureType)
+    - [StatusOta](#OtaClientV2-StatusOta)
+    - [StatusProgressPhase](#OtaClientV2-StatusProgressPhase)
+    - [UpdatePhase](#OtaClientV2-UpdatePhase)
+  
+    - [OtaClientService](#OtaClientV2-OtaClientService)
+  
 - [Scalar Value Types](#scalar-value-types)
+
+
 
 <a name="otaclient_v2-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## otaclient_v2.proto
 
+
+
+<a name="OtaClientV2-AbortRequest"></a>
+
+### AbortRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ecu | [AbortRequestEcu](#OtaClientV2-AbortRequestEcu) | repeated |  |
+| request_id | [string](#string) |  | Request id to identify the request from the client. |
+
+
+
+
+
+
+<a name="OtaClientV2-AbortRequestEcu"></a>
+
+### AbortRequestEcu
+Request
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ecu_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="OtaClientV2-AbortResponse"></a>
+
+### AbortResponse
+Response
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ecu | [AbortResponseEcu](#OtaClientV2-AbortResponseEcu) | repeated |  |
+
+
+
+
+
+
+<a name="OtaClientV2-AbortResponseEcu"></a>
+
+### AbortResponseEcu
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ecu_id | [string](#string) |  | ECU id responded |
+| result | [AbortFailureType](#OtaClientV2-AbortFailureType) |  | result |
+| message | [string](#string) |  | message |
+
+
+
+
+
+
 <a name="OtaClientV2-RollbackRequest"></a>
 
 ### RollbackRequest
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | ecu | [RollbackRequestEcu](#OtaClientV2-RollbackRequestEcu) | repeated |  |
 | request_id | [string](#string) |  | Request id to identify the request from the client. |
 
+
+
+
+
+
 <a name="OtaClientV2-RollbackRequestEcu"></a>
 
 ### RollbackRequestEcu
-
 Request
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | ecu_id | [string](#string) |  |  |
 
+
+
+
+
+
 <a name="OtaClientV2-RollbackResponse"></a>
 
 ### RollbackResponse
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | ecu | [RollbackResponseEcu](#OtaClientV2-RollbackResponseEcu) | repeated |  |
 
+
+
+
+
+
 <a name="OtaClientV2-RollbackResponseEcu"></a>
 
 ### RollbackResponseEcu
-
 Response
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -77,9 +164,16 @@ Response
 | result | [FailureType](#OtaClientV2-FailureType) |  | result |
 | message | [string](#string) |  | message |
 
+
+
+
+
+
 <a name="OtaClientV2-Status"></a>
 
 ### Status
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -89,9 +183,16 @@ Response
 | version | [string](#string) |  | current version string |
 | progress | [StatusProgress](#OtaClientV2-StatusProgress) |  | status is UPDATING, this field is valid. |
 
+
+
+
+
+
 <a name="OtaClientV2-StatusProgress"></a>
 
 ### StatusProgress
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -112,17 +213,28 @@ Response
 | total_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  | total elapsed time |
 | download_bytes | [uint64](#uint64) |  | data transfer volume during the whole OTA update process |
 
+
+
+
+
+
 <a name="OtaClientV2-StatusRequest"></a>
 
 ### StatusRequest
-
 Status
 
 Request
 
+
+
+
+
+
 <a name="OtaClientV2-StatusResponse"></a>
 
 ### StatusResponse
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -130,9 +242,16 @@ Request
 | available_ecu_ids | [string](#string) | repeated | list of all available ECUs in this vehicle (see ecu_info.yml) |
 | ecu_v2 | [StatusResponseEcuV2](#OtaClientV2-StatusResponseEcuV2) | repeated | list of status(v2) of all available ECUs |
 
+
+
+
+
+
 <a name="OtaClientV2-StatusResponseEcu"></a>
 
 ### StatusResponseEcu
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -140,9 +259,16 @@ Request
 | result | [FailureType](#OtaClientV2-FailureType) |  |  |
 | status | [Status](#OtaClientV2-Status) |  |  |
 
+
+
+
+
+
 <a name="OtaClientV2-StatusResponseEcuV2"></a>
 
 ### StatusResponseEcuV2
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -155,69 +281,69 @@ Request
 | failure_traceback | [string](#string) | optional |  |
 | update_status | [UpdateStatus](#OtaClientV2-UpdateStatus) | optional | update status, set if ota_status is UPDATING |
 
-<a name="OtaClientV2-StopRequest"></a>
 
-### StopRequest
 
-Request
 
-empty for now
 
-<a name="OtaClientV2-StopResponse"></a>
-
-### StopResponse
-
-Response
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ecu | [StopResponseEcu](#OtaClientV2-StopResponseEcu) | repeated |  |
-
-<a name="OtaClientV2-StopResponseEcu"></a>
-
-### StopResponseEcu
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ecu_id | [string](#string) |  | ECU id responded |
-| result | [FailureType](#OtaClientV2-FailureType) |  | result |
-| message | [string](#string) |  | message |
 
 <a name="OtaClientV2-UpdateRequest"></a>
 
 ### UpdateRequest
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | ecu | [UpdateRequestEcu](#OtaClientV2-UpdateRequestEcu) | repeated |  |
 | request_id | [string](#string) |  | Request id to identify the request from the client. |
 
+
+
+
+
+
 <a name="OtaClientV2-UpdateRequestEcu"></a>
 
 ### UpdateRequestEcu
-
 Request
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| ecu_id | [string](#string) |  | ECU id to update. OTA client pickups the entry that matches their own ECU id and this ECU id. |
-| version | [string](#string) |  | version to update. Any version string can be used. When the update is done successfully, the OTA client saves this version as the current version. |
-| url | [string](#string) |  | OTA server URL. |
+| ecu_id | [string](#string) |  | ECU id to update. OTA client pickups the entry that |
+| version | [string](#string) |  | matches their own ECU id and this ECU id.
+
+version to update. Any version string can be used. When |
+| url | [string](#string) |  | the update is done successfully, the OTA client saves this version as the current version.
+
+OTA server URL. |
 | cookies | [string](#string) |  | cookie entries with JSON notation. |
+
+
+
+
+
 
 <a name="OtaClientV2-UpdateResponse"></a>
 
 ### UpdateResponse
 
+
+
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | ecu | [UpdateResponseEcu](#OtaClientV2-UpdateResponseEcu) | repeated |  |
 
+
+
+
+
+
 <a name="OtaClientV2-UpdateResponseEcu"></a>
 
 ### UpdateResponseEcu
-
 Response
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -225,9 +351,16 @@ Response
 | result | [FailureType](#OtaClientV2-FailureType) |  | result |
 | message | [string](#string) |  | message |
 
+
+
+
+
+
 <a name="OtaClientV2-UpdateStatus"></a>
 
 ### UpdateStatus
+
+
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -249,8 +382,8 @@ num of files needed to be downloaded from remote |
 | total_remove_files_num | [uint64](#uint64) |  | - applying update phase - //
 
 for in-place update mode, files to be removed |
-| removed_files_num | [uint64](#uint64) |  | for in-place update mode, removed files during standby slot updating |
-| processed_files_num | [uint64](#uint64) |  | NOTE: processed_files_num/size are corresponding to total_files_num/total_image_size
+| removed_files_num | [uint64](#uint64) |  | for in-place update mode, removed files |
+| processed_files_num | [uint64](#uint64) |  | during standby slot updating NOTE: processed_files_num/size are corresponding to total_files_num/total_image_size
 
 num of files processed to the standby slot during applying update |
 | processed_files_size | [uint64](#uint64) |  | size(uncompressed) of processed files |
@@ -259,10 +392,28 @@ num of files processed to the standby slot during applying update |
 | downloading_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
 | update_applying_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
 
+
+
+
+
+ 
+
+
+<a name="OtaClientV2-AbortFailureType"></a>
+
+### AbortFailureType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| ABORT_NO_FAILURE | 0 |  |
+| ABORT_FAILURE | 1 |  |
+
+
+
 <a name="OtaClientV2-FailureType"></a>
 
 ### FailureType
-
 Common
 
 | Name | Number | Description |
@@ -271,10 +422,11 @@ Common
 | RECOVERABLE | 1 |  |
 | UNRECOVERABLE | 2 |  |
 
+
+
 <a name="OtaClientV2-StatusOta"></a>
 
 ### StatusOta
-
 Response
 
 | Name | Number | Description |
@@ -286,10 +438,15 @@ Response
 | ROLLBACKING | 4 |  |
 | ROLLBACK_FAILURE | 5 |  |
 | CLIENT_UPDATING | 6 |  |
+| ABORTING | 7 |  |
+| ABORTED | 8 |  |
+
+
 
 <a name="OtaClientV2-StatusProgressPhase"></a>
 
 ### StatusProgressPhase
+
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
@@ -301,9 +458,12 @@ Response
 | PERSISTENT | 5 |  |
 | POST_PROCESSING | 6 |  |
 
+
+
 <a name="OtaClientV2-UpdatePhase"></a>
 
 ### UpdatePhase
+
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
@@ -316,20 +476,30 @@ Response
 | FINALIZING_UPDATE | 6 | set during first reboot boot switch finalizing |
 | DOWNLOADING_OTA_CLIENT | 7 |  |
 
+
+ 
+
+ 
+
+
 <a name="OtaClientV2-OtaClientService"></a>
 
 ### OtaClientService
-
 The OTA Client service definition.
-Style Guide: <https://developers.google.com/protocol-buffers/docs/style#message_and_field_names>
+Style Guide:
+https://developers.google.com/protocol-buffers/docs/style#message_and_field_names
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Update | [UpdateRequest](#OtaClientV2-UpdateRequest) | [UpdateResponse](#OtaClientV2-UpdateResponse) | `Update` service requests OTA client to start updating. The OTA client of each ECU retrieves the request that matches its own ECU id and starts it. Requests to each ECU included in the `UpdateRequest` are handled by that respective ECU and returns the response to the parent ECU. Main ECU merges the responses as UpdateResponse. After requesting `Update` and if the OTA status is `UPDATING`, the request is successful. Note that if the child ECU doesn&#39;t respond, the grandchild response is not included by `UpdateResponse`. |
-| Stop | [StopRequest](#OtaClientV2-StopRequest) | [StopResponse](#OtaClientV2-StopResponse) | `Stop` service requests the OTA client to stop any currently running update operations. Each ECU attempts to halt its update process safely. The response indicates whether the stop command was accepted. If the update is in a critical zone, the stop command will be ignored. |
+| Abort | [AbortRequest](#OtaClientV2-AbortRequest) | [AbortResponse](#OtaClientV2-AbortResponse) | `Abort` service requests the OTA client to abort any currently running update operations. Each ECU attempts to halt its update process safely. The response indicates whether the abort command was accepted. If the update is in a critical zone, the abort command will be ignored. |
 | Rollback | [RollbackRequest](#OtaClientV2-RollbackRequest) | [RollbackResponse](#OtaClientV2-RollbackResponse) | NOT YET |
 | Status | [StatusRequest](#OtaClientV2-StatusRequest) | [StatusResponse](#OtaClientV2-StatusResponse) | `Status` service requests OTA client to retrieve OTA client status. Note that if the child ECU doesn&#39;t respond, the grandchild response is not contained by `StatusResponse`. |
 | ClientUpdate | [UpdateRequest](#OtaClientV2-UpdateRequest) | [UpdateResponse](#OtaClientV2-UpdateResponse) | `ClientUpdate` service requests OTA client to start client updating. The OTA client of each ECU retrieves the request that matches its own ECU id and starts it. Requests to each ECU included in the `UpdateRequest` are handled by that respective ECU and returns the response to the parent ECU. Main ECU merges the responses as UpdateResponse. After requesting `ClientUpdate` and if the OTA status is `CLIENT_UPDATING`, the request is successful. Note that if the child ECU doesn&#39;t respond, the grandchild response is not included by `UpdateResponse`. |
+
+ 
+
+
 
 ## Scalar Value Types
 
@@ -350,3 +520,4 @@ Style Guide: <https://developers.google.com/protocol-buffers/docs/style#message_
 | <a name="bool" /> bool |  | bool | boolean | boolean | bool | bool | boolean | TrueClass/FalseClass |
 | <a name="string" /> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode | string | string | string | String (UTF-8) |
 | <a name="bytes" /> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str | []byte | ByteString | string | String (ASCII-8BIT) |
+
