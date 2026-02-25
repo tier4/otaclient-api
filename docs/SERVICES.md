@@ -310,13 +310,9 @@ Request
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| ecu_id | [string](#string) |  | ECU id to update. OTA client pickups the entry that |
-| version | [string](#string) |  | matches their own ECU id and this ECU id.
-
-version to update. Any version string can be used. When |
-| url | [string](#string) |  | the update is done successfully, the OTA client saves this version as the current version.
-
-OTA server URL. |
+| ecu_id | [string](#string) |  | ECU id to update. OTA client pickups the entry that matches their own ECU id and this ECU id. |
+| version | [string](#string) |  | version to update. Any version string can be used. When the update is done successfully, the OTA client saves this version as the current version. |
+| url | [string](#string) |  | OTA server URL. |
 | cookies | [string](#string) |  | cookie entries with JSON notation. |
 
 
@@ -382,8 +378,8 @@ num of files needed to be downloaded from remote |
 | total_remove_files_num | [uint64](#uint64) |  | - applying update phase - //
 
 for in-place update mode, files to be removed |
-| removed_files_num | [uint64](#uint64) |  | for in-place update mode, removed files |
-| processed_files_num | [uint64](#uint64) |  | during standby slot updating NOTE: processed_files_num/size are corresponding to total_files_num/total_image_size
+| removed_files_num | [uint64](#uint64) |  | for in-place update mode, removed files during standby slot updating |
+| processed_files_num | [uint64](#uint64) |  | NOTE: processed_files_num/size are corresponding to total_files_num/total_image_size
 
 num of files processed to the standby slot during applying update |
 | processed_files_size | [uint64](#uint64) |  | size(uncompressed) of processed files |
@@ -486,8 +482,7 @@ Response
 
 ### OtaClientService
 The OTA Client service definition.
-Style Guide:
-https://developers.google.com/protocol-buffers/docs/style#message_and_field_names
+Style Guide: https://developers.google.com/protocol-buffers/docs/style#message_and_field_names
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
