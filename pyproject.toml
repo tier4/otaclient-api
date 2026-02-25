@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "hatchling.build"
 requires = [
-  "grpcio-tools<1.77,>=1.57",
+  "grpcio-tools<1.58,>=1.57", # pinned: cannot update this because the Agent uses grpcio-tools 1.57.x API
   "hatch-vcs",
   "hatchling>=1.20",
 ]
