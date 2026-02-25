@@ -1,0 +1,36 @@
+name: Update SERVICES.md
+
+permissions:
+  contents: write
+
+on:
+  pull_request:
+    paths:
+      - 'proto/**'
+
+jobs:
+  update_services_doc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: generate SERVICES.md
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/docs:/out \
+            -v ${{ github.workspace }}/proto:/protos \
+            pseudomuto/protoc-gen-doc \
+            --doc_opt=markdown,SERVICES.md
+
+      - name: commit and push if changed
+        run: |
+          git diff --quiet docs/SERVICES.md && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/SERVICES.md
+          git commit -m "docs: update SERVICES.md"
+          git push

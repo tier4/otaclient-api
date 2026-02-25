@@ -39,12 +39,12 @@ service OtaClientService {
   rpc Update (UpdateRequest) returns (UpdateResponse) {}
 
   /*
-   * `Stop` service requests the OTA client to stop any currently running update operations.
+   * `Abort` service requests the OTA client to abort any currently running update operations.
    * Each ECU attempts to halt its update process safely.
-   * The response indicates whether the stop command was accepted.
-   * If the update is in a critical zone, the stop command will be ignored.
+   * The response indicates whether the abort command was accepted.
+   * If the update is in a critical zone, the abort command will be ignored.
    */
-  rpc Stop (StopRequest) returns (StopResponse) {}
+  rpc Abort (AbortRequest) returns (AbortResponse) {}
 
   /*
    * NOT YET
@@ -80,6 +80,11 @@ enum FailureType {
     UNRECOVERABLE = 2;
 }
 
+enum AbortFailureType {
+    ABORT_NO_FAILURE = 0;
+    ABORT_FAILURE = 1;
+}
+
 //
 // Update
 //
@@ -109,23 +114,28 @@ message UpdateResponse {
 }
 
 //
-// Stop
+// Abort
 //
 
 // Request
-message StopRequest {
-  // empty for now
+message AbortRequestEcu {
+  string ecu_id = 1;
 }
 
-message StopResponseEcu {
+message AbortRequest {
+  repeated AbortRequestEcu ecu = 1;
+  string request_id = 2; // Request id to identify the request from the client.
+}
+
+message AbortResponseEcu {
   string ecu_id = 1; // ECU id responded
-  FailureType result = 2; // result
+  AbortFailureType result = 2; // result
   string message = 3; // message
 }
 
 // Response
-message StopResponse {
-  repeated StopResponseEcu ecu = 1;
+message AbortResponse {
+  repeated AbortResponseEcu ecu = 1;
 }
 
 //
@@ -169,6 +179,8 @@ enum StatusOta {
   ROLLBACKING = 4;
   ROLLBACK_FAILURE = 5;
   CLIENT_UPDATING = 6;
+  ABORTING = 7;
+  ABORTED = 8;
 }
 
 enum StatusProgressPhase {
@@ -257,29 +269,23 @@ message StatusResponseEcuV2 {
 }
 
 message UpdateStatus {
-  // --- update meta: 1~10 --- //
   string update_firmware_version = 1; // update target image version
   uint64 total_files_size_uncompressed = 2; // uncompressed size of all files in update_firmware image
   uint64 total_files_num = 3; // total files num in the update_firmware image
   uint64 update_start_timestamp = 4; // update start time in unix timestamp
 
-  // --- update progress: 11~30 --- //
   UpdatePhase phase = 11;
-  // - downloading phase - //
   uint64 total_download_files_num = 12; // num of files needed to be downloaded from remote
   uint64 total_download_files_size = 13; // size(uncompressed) of all files needed to be downloaded
   uint64 downloaded_files_num = 14; // downloaded files num during downloading
   uint64 downloaded_bytes = 15; // network traffic during downloading
   uint64 downloaded_files_size = 16; // size(uncompressed) of downloaded files during downloading
   uint64 downloading_errors = 17;
-  // - applying update phase - //
   uint64 total_remove_files_num = 18; // for in-place update mode, files to be removed
   uint64 removed_files_num = 19; // for in-place update mode, removed files during standby slot updating
-  // NOTE: processed_files_num/size are corresponding to total_files_num/total_image_size
   uint64 processed_files_num = 20; // num of files processed to the standby slot during applying update
   uint64 processed_files_size = 21; // size(uncompressed) of processed files
 
-  // --- timing --- //
   google.protobuf.Duration total_elapsed_time = 31;
   google.protobuf.Duration delta_generating_elapsed_time = 32;
   google.protobuf.Duration downloading_elapsed_time = 33;
