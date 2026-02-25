@@ -23,15 +23,15 @@
     - [UpdateResponse](#OtaClientV2-UpdateResponse)
     - [UpdateResponseEcu](#OtaClientV2-UpdateResponseEcu)
     - [UpdateStatus](#OtaClientV2-UpdateStatus)
-  
+
     - [AbortFailureType](#OtaClientV2-AbortFailureType)
     - [FailureType](#OtaClientV2-FailureType)
     - [StatusOta](#OtaClientV2-StatusOta)
     - [StatusProgressPhase](#OtaClientV2-StatusProgressPhase)
     - [UpdatePhase](#OtaClientV2-UpdatePhase)
-  
+
     - [OtaClientService](#OtaClientV2-OtaClientService)
-  
+
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -360,30 +360,22 @@ Response
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| update_firmware_version | [string](#string) |  | --- update meta: 1~10 --- //
-
-update target image version |
+| update_firmware_version | [string](#string) |  | update target image version |
 | total_files_size_uncompressed | [uint64](#uint64) |  | uncompressed size of all files in update_firmware image |
 | total_files_num | [uint64](#uint64) |  | total files num in the update_firmware image |
 | update_start_timestamp | [uint64](#uint64) |  | update start time in unix timestamp |
-| phase | [UpdatePhase](#OtaClientV2-UpdatePhase) |  | --- update progress: 11~30 --- // |
-| total_download_files_num | [uint64](#uint64) |  | - downloading phase - //
-
-num of files needed to be downloaded from remote |
+| phase | [UpdatePhase](#OtaClientV2-UpdatePhase) |  |  |
+| total_download_files_num | [uint64](#uint64) |  | num of files needed to be downloaded from remote |
 | total_download_files_size | [uint64](#uint64) |  | size(uncompressed) of all files needed to be downloaded |
 | downloaded_files_num | [uint64](#uint64) |  | downloaded files num during downloading |
 | downloaded_bytes | [uint64](#uint64) |  | network traffic during downloading |
 | downloaded_files_size | [uint64](#uint64) |  | size(uncompressed) of downloaded files during downloading |
 | downloading_errors | [uint64](#uint64) |  |  |
-| total_remove_files_num | [uint64](#uint64) |  | - applying update phase - //
-
-for in-place update mode, files to be removed |
+| total_remove_files_num | [uint64](#uint64) |  | for in-place update mode, files to be removed |
 | removed_files_num | [uint64](#uint64) |  | for in-place update mode, removed files during standby slot updating |
-| processed_files_num | [uint64](#uint64) |  | NOTE: processed_files_num/size are corresponding to total_files_num/total_image_size
-
-num of files processed to the standby slot during applying update |
+| processed_files_num | [uint64](#uint64) |  | num of files processed to the standby slot during applying update |
 | processed_files_size | [uint64](#uint64) |  | size(uncompressed) of processed files |
-| total_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  | --- timing --- // |
+| total_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
 | delta_generating_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
 | downloading_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
 | update_applying_elapsed_time | [google.protobuf.Duration](#google-protobuf-Duration) |  |  |
@@ -392,7 +384,7 @@ num of files processed to the standby slot during applying update |
 
 
 
- 
+
 
 
 <a name="OtaClientV2-AbortFailureType"></a>
@@ -473,9 +465,9 @@ Response
 | DOWNLOADING_OTA_CLIENT | 7 |  |
 
 
- 
 
- 
+
+
 
 
 <a name="OtaClientV2-OtaClientService"></a>
@@ -492,7 +484,7 @@ Style Guide: https://developers.google.com/protocol-buffers/docs/style#message_a
 | Status | [StatusRequest](#OtaClientV2-StatusRequest) | [StatusResponse](#OtaClientV2-StatusResponse) | `Status` service requests OTA client to retrieve OTA client status. Note that if the child ECU doesn&#39;t respond, the grandchild response is not contained by `StatusResponse`. |
 | ClientUpdate | [UpdateRequest](#OtaClientV2-UpdateRequest) | [UpdateResponse](#OtaClientV2-UpdateResponse) | `ClientUpdate` service requests OTA client to start client updating. The OTA client of each ECU retrieves the request that matches its own ECU id and starts it. Requests to each ECU included in the `UpdateRequest` are handled by that respective ECU and returns the response to the parent ECU. Main ECU merges the responses as UpdateResponse. After requesting `ClientUpdate` and if the OTA status is `CLIENT_UPDATING`, the request is successful. Note that if the child ECU doesn&#39;t respond, the grandchild response is not included by `UpdateResponse`. |
 
- 
+
 
 
 
@@ -515,4 +507,3 @@ Style Guide: https://developers.google.com/protocol-buffers/docs/style#message_a
 | <a name="bool" /> bool |  | bool | boolean | boolean | bool | bool | boolean | TrueClass/FalseClass |
 | <a name="string" /> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode | string | string | string | String (UTF-8) |
 | <a name="bytes" /> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str | []byte | ByteString | string | String (ASCII-8BIT) |
-
