@@ -23,15 +23,15 @@
     - [UpdateResponse](#OtaClientV2-UpdateResponse)
     - [UpdateResponseEcu](#OtaClientV2-UpdateResponseEcu)
     - [UpdateStatus](#OtaClientV2-UpdateStatus)
-
+  
     - [AbortFailureType](#OtaClientV2-AbortFailureType)
     - [FailureType](#OtaClientV2-FailureType)
     - [StatusOta](#OtaClientV2-StatusOta)
     - [StatusProgressPhase](#OtaClientV2-StatusProgressPhase)
     - [UpdatePhase](#OtaClientV2-UpdatePhase)
-
+  
     - [OtaClientService](#OtaClientV2-OtaClientService)
-
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -384,7 +384,7 @@ Response
 
 
 
-
+ 
 
 
 <a name="OtaClientV2-AbortFailureType"></a>
@@ -465,9 +465,9 @@ Response
 | DOWNLOADING_OTA_CLIENT | 7 |  |
 
 
+ 
 
-
-
+ 
 
 
 <a name="OtaClientV2-OtaClientService"></a>
@@ -484,7 +484,7 @@ Style Guide: https://developers.google.com/protocol-buffers/docs/style#message_a
 | Status | [StatusRequest](#OtaClientV2-StatusRequest) | [StatusResponse](#OtaClientV2-StatusResponse) | `Status` service requests OTA client to retrieve OTA client status. Note that if the child ECU doesn&#39;t respond, the grandchild response is not contained by `StatusResponse`. |
 | ClientUpdate | [UpdateRequest](#OtaClientV2-UpdateRequest) | [UpdateResponse](#OtaClientV2-UpdateResponse) | `ClientUpdate` service requests OTA client to start client updating. The OTA client of each ECU retrieves the request that matches its own ECU id and starts it. Requests to each ECU included in the `UpdateRequest` are handled by that respective ECU and returns the response to the parent ECU. Main ECU merges the responses as UpdateResponse. After requesting `ClientUpdate` and if the OTA status is `CLIENT_UPDATING`, the request is successful. Note that if the child ECU doesn&#39;t respond, the grandchild response is not included by `UpdateResponse`. |
 
-
+ 
 
 
 
@@ -507,3 +507,4 @@ Style Guide: https://developers.google.com/protocol-buffers/docs/style#message_a
 | <a name="bool" /> bool |  | bool | boolean | boolean | bool | bool | boolean | TrueClass/FalseClass |
 | <a name="string" /> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode | string | string | string | String (UTF-8) |
 | <a name="bytes" /> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str | []byte | ByteString | string | String (ASCII-8BIT) |
+
