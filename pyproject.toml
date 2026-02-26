@@ -50,9 +50,6 @@ sources = [
   "src",
 ]
 
-[tool.hatch.envs.default]
-type = "system"
-
 [tool.hatch.build.hooks.custom]
 path = "script/hatch_build.py"
 proto_builds = [
