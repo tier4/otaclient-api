@@ -38,6 +38,12 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
+artifacts = [
+  "src/otaclient_pb2/v2/*_pb2.py",
+  "src/otaclient_pb2/v2/*_pb2_grpc.py",
+  "src/otaclient_pb2/v2/*.pyi",
+  "src/otaclient_pb2/v2/*.proto",
+]
 exclude = [
   "**/.gitignore",
   "**/*README.md",

@@ -16,18 +16,16 @@ pip install git+https://github.com/tier4/otaclient-api.git
 
 ## Building from source
 
-1. Set up a virtual environment and install hatch:
+1. Install build dependencies:
 
 ```shell
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -U pip hatch
+pip install -U pip build
 ```
 
 2. Build the wheel package:
 
 ```shell
-hatch build -t wheel
+python -m build --wheel
 ```
 
 3. The built package will be placed in the `./dist` directory.

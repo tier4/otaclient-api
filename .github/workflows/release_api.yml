@@ -28,10 +28,10 @@ jobs:
       - name: install build deps
         run: |
           python -m pip install -U pip
-          python -m pip install -U hatch
+          python -m pip install -U build
 
       - name: build otaclient service API python package
-        run: hatch build -t wheel
+        run: python -m build --wheel
 
       - name: upload artifacts
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
