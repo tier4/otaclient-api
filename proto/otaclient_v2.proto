@@ -95,6 +95,9 @@ message UpdateRequestEcu {
   string version = 2; // version to update. Any version string can be used. When the update is done successfully, the OTA client saves this version as the current version.
   string url = 3; // OTA server URL.
   string cookies = 4; // cookie entries with JSON notation.
+  string release_name = 5; // release name to update.
+  string release_id = 6; // release id to update.
+  string image_id = 7; // image id to update.
 }
 
 message UpdateRequest {
@@ -252,7 +255,10 @@ message StatusResponseEcuV2 {
   string ecu_id = 1;
   string firmware_version = 2;
   string otaclient_version = 3;
-  reserved 4 to 10;
+  string release_name = 4;
+  string release_id = 5;
+  string image_id = 6;
+  reserved 7 to 10;
 
   // --- dynamic ECU status: 11~ --- //
   StatusOta ota_status = 11;
