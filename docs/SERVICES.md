@@ -275,6 +275,9 @@ Request
 | ecu_id | [string](#string) |  | --- static ECU info: 1~10 --- // |
 | firmware_version | [string](#string) |  |  |
 | otaclient_version | [string](#string) |  |  |
+| release_name | [string](#string) |  |  |
+| release_id | [string](#string) |  |  |
+| image_id | [string](#string) |  |  |
 | ota_status | [StatusOta](#OtaClientV2-StatusOta) |  | --- dynamic ECU status: 11~ --- // |
 | failure_type | [FailureType](#OtaClientV2-FailureType) | optional | when ota_status is FAILURE/ROLLBACK_FAILURE, failure_type, failure_reason should be set |
 | failure_reason | [string](#string) | optional |  |
@@ -314,6 +317,9 @@ Request
 | version | [string](#string) |  | version to update. Any version string can be used. When the update is done successfully, the OTA client saves this version as the current version. |
 | url | [string](#string) |  | OTA server URL. |
 | cookies | [string](#string) |  | cookie entries with JSON notation. |
+| release_name | [string](#string) |  | release name to update. |
+| release_id | [string](#string) |  | release id to update. |
+| image_id | [string](#string) |  | image id to update. |
 
 
 
