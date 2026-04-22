@@ -255,10 +255,10 @@ message StatusResponseEcuV2 {
   string ecu_id = 1;
   string firmware_version = 2;
   string otaclient_version = 3;
-  string release_name = 4;
-  string release_id = 5;
-  string image_id = 6;
-  reserved 7 to 10;
+  reserved 4 to 10;
+  string release_name = 21;
+  string release_id = 22;
+  string image_id = 23;
 
   // --- dynamic ECU status: 11~ --- //
   StatusOta ota_status = 11;
