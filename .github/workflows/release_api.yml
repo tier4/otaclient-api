@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
 
       - name: setup python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           # use the minimum py ver we support to generate the wheel
           python-version: 3.8
@@ -36,7 +36,7 @@ jobs:
         run: python -m build --wheel
 
       - name: upload artifacts
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: artifacts-python-packages
           path: dist/*.whl
@@ -53,7 +53,7 @@ jobs:
         persist-credentials: false
 
     - name: download python packages artifact
-      uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       with:
         name: artifacts-python-packages
         path: dist
@@ -66,7 +66,7 @@ jobs:
 
     - name: publish release artifacts
       if: ${{ github.event_name == 'release' }}
-      uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v2
+      uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v2
       with:
         files: |
           dist/*.whl
